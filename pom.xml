@@ -8,7 +8,7 @@
     <artifactId>UltimateLib</artifactId>
     <version>1.0.0</version>
     <url>http://chormon.pl</url>
-    <description></description>
+    <description>Library for all my Minecraft plugins.</description>
 
     <!-- Build properties -->
     <properties>
