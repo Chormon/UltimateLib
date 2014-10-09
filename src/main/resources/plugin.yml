@@ -1,5 +1,5 @@
 name: UltimateLib
-description: WIP
+description: Library for all my plugins.
 main: pl.chormon.ultimatelib.UltimateLib
 author: Chormon
 version: "${project.version}"
