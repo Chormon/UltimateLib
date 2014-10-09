@@ -34,18 +34,44 @@ import pl.chormon.ultimatelib.utils.MsgUtils;
  */
 public class UltimateLib extends JavaPlugin {
     
-    private PluginDescriptionFile pdf;
+    protected PluginDescriptionFile pdf;
+    protected MsgUtils msgUtils;
 
     @Override
     public void onEnable() {
         pdf = this.getDescription();
-        MsgUtils.setConsole(Bukkit.getConsoleSender());
-        MsgUtils.info("{name} {version} enabled!", "{name}", pdf.getName(), "{version}", pdf.getVersion());
+        msgUtils = new MsgUtils();
+        msgUtils.setConsole(Bukkit.getConsoleSender());
+        msgUtils.info("{name} {version} enabled!", "{name}", pdf.getName(), "{version}", pdf.getVersion());
     }
 
     @Override
     public void onDisable() {
-        MsgUtils.info("{name} {version} disabled!", "{name}", pdf.getName(), "{version}", pdf.getVersion());      
+        msgUtils.info("{name} {version} disabled!", "{name}", pdf.getName(), "{version}", pdf.getVersion());      
+    }
+
+    public void info(String msg) {
+        msgUtils.info(msg, (Object) null);
+    }
+
+    public void info(String msg, Object... vars) {
+        msgUtils.info(msg, vars);
+    }
+
+    public void warning(String msg) {
+        msgUtils.warning(msg, (Object) null);
+    }
+
+    public void warning(String msg, Object... vars) {
+        msgUtils.warning(msg, vars);
+    }
+
+    public void error(String msg) {
+        msgUtils.error(msg, (Object) null);
+    }
+
+    public void error(String msg, Object... vars) {
+        msgUtils.error(msg, vars);
     }
     
 }

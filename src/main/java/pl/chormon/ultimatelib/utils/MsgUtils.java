@@ -35,45 +35,52 @@ import org.bukkit.command.ConsoleCommandSender;
 public class MsgUtils {
 
     private static ConsoleCommandSender console;
-    private final static String prefix = "&e[UltimateClans]&r";
+    private String prefix = "&e[UltimateLib]&r";
     private final static String info = "&a[INFO]&r ";
     private final static String warning = "&e[WARNING]&r ";
     private final static String error = "&c[ERROR]&r ";
 
-    public static void setConsole(ConsoleCommandSender console) {
+    public MsgUtils() {
+    }
+
+    public MsgUtils(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public void setConsole(ConsoleCommandSender console) {
         MsgUtils.console = console;
     }
     
-    private static void log(String msg, String prefix, Object... vars) {
+    private void log(String msg, String prefix, Object... vars) {
         String[] split = fixMsg(msg, vars).split("\n");
-        String pre = fixMsg(MsgUtils.prefix + prefix);
+        String pre = fixMsg(this.prefix + prefix);
         for(String str : split) {
             console.sendMessage(pre + str);
         }
     }
 
-    public static void info(String msg) {
-        MsgUtils.log(msg, info, (Object) null);
+    public void info(String msg) {
+        log(msg, info, (Object) null);
     }
 
-    public static void info(String msg, Object... vars) {
-        MsgUtils.log(msg, info, vars);
+    public void info(String msg, Object... vars) {
+        log(msg, info, vars);
     }
 
-    public static void warning(String msg) {
-        MsgUtils.log(msg, warning, (Object) null);
+    public void warning(String msg) {
+        log(msg, warning, (Object) null);
     }
 
-    public static void warning(String msg, Object... vars) {
-        MsgUtils.log(msg, warning, vars);
+    public void warning(String msg, Object... vars) {
+        log(msg, warning, vars);
     }
 
-    public static void error(String msg) {
-        MsgUtils.log(msg, error, (Object) null);
+    public void error(String msg) {
+        log(msg, error, (Object) null);
     }
 
-    public static void error(String msg, Object... vars) {
-        MsgUtils.log(msg, error, vars);
+    public void error(String msg, Object... vars) {
+        log(msg, error, vars);
     }
 
     public static void msg(CommandSender cs, String msg) {
