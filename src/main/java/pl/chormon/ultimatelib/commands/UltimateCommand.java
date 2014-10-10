@@ -131,7 +131,7 @@ public abstract class UltimateCommand implements CommandExecutor {
 
     private void parse(CommandSender sender, UltimateCommand command, String label, List<String> args) {
         if (!reqAreMet(sender, command)) {
-            noPerms(sender);
+//            noPerms(sender);
             return;
         }
         for (UltimateCommand cmd : command.getSubCommands()) {
@@ -157,6 +157,7 @@ public abstract class UltimateCommand implements CommandExecutor {
     private boolean reqAreMet(CommandSender sender, UltimateCommand command) {
         for (Req req : command.reqs) {
             if (!req.apply(sender)) {
+                req.message(sender);
                 return false;
             }
         }
