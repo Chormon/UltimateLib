@@ -24,6 +24,7 @@
 package pl.chormon.ultimatelib.commands.req;
 
 import org.bukkit.command.CommandSender;
+import pl.chormon.ultimatelib.utils.MsgUtils;
 
 /**
  *
@@ -31,5 +32,8 @@ import org.bukkit.command.CommandSender;
  */
 public abstract class Req {
 	public abstract boolean apply(CommandSender sender);
+        public void message(CommandSender sender) {
+            MsgUtils.msg(sender, "&4Nie możesz użyć tej komendy!");
+        }
     
 }

@@ -24,16 +24,17 @@
 package pl.chormon.ultimatelib.commands.req;
 
 import org.bukkit.command.CommandSender;
+import pl.chormon.ultimatelib.utils.MsgUtils;
 
 /**
  *
  * @author Chormon
  */
-public class ReqIsPerm extends Req {
+public class ReqHasPerm extends Req {
 
     private final String perm;
 
-    public ReqIsPerm(String perm) {
+    public ReqHasPerm(String perm) {
         this.perm = perm;
     }
     
@@ -44,6 +45,11 @@ public class ReqIsPerm extends Req {
     @Override
     public boolean apply(CommandSender sender) {
         return sender.hasPermission(perm);
+    }
+    
+    @Override
+    public void message(CommandSender sender) {
+        MsgUtils.msg(sender, "&4Nie masz uprawnień, żeby użyć tej komendy!");
     }
 
 }
